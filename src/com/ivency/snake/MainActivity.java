@@ -1,6 +1,7 @@
 package com.ivency.snake;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,12 +42,21 @@ public class MainActivity extends Activity {
 	}
 
 	/**
+	 * 开始游戏，进入游戏界面
+	 */
+	protected void startGame() {
+		Intent intent = new Intent();
+		intent.setClass(this, GameActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
 	 * 给界面元素添加监听器
 	 */
 	private void addListener() {
 		OnClickListener listener_startGame = new Button.OnClickListener(){
 			public void onClick(View v) {
-				//TODO: startGame();
+				startGame();
 			}
 		};
 		button_startGame.setOnClickListener(listener_startGame);
@@ -60,7 +70,7 @@ public class MainActivity extends Activity {
 		
 		OnClickListener listener_exit = new Button.OnClickListener(){
 			public void onClick(View v) {
-				//TODO: exit();
+				finish();
 			}
 		};
 		button_exit.setOnClickListener(listener_exit);
